@@ -102,28 +102,28 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-    - name: Fix uqmi compilation issue
-      run: |
-        cd $OPENWRT_PATH
-        # 备份当前配置
-        cp .config .config.backup
-        
-        # 方案1：修改源代码
-        if [ -f "build_dir/target-x86_64_musl/uqmi-2022-05-04-56cb2d40/dev.c" ]; then
-          echo "Modifying uqmi source code..."
-          sed -i 's/bool complete = false/static bool complete = false/' build_dir/target-x86_64_musl/uqmi-2022-05-04-56cb2d40/dev.c
-        fi
-        
-        # 方案2：如果方案1不起作用，修改编译选项
-        echo "Modifying uqmi Makefile to disable dangling pointer warning..."
-        sed -i 's/-Werror/-Werror -Wno-error=dangling-pointer/g' package/network/utils/uqmi/Makefile
-        
-        # 清理并重新编译 uqmi
-        echo "Cleaning uqmi package..."
-        make package/network/utils/uqmi/clean
-        
-        # 恢复配置
-        cp .config.backup .config
+ #   - name: Fix uqmi compilation issue
+ #     run: |
+ #       cd $OPENWRT_PATH
+ #       # 备份当前配置
+ #       cp .config .config.backup
+ #       
+ #       # 方案1：修改源代码
+ #       if [ -f "build_dir/target-x86_64_musl/uqmi-2022-05-04-56cb2d40/dev.c" ]; then
+ #         echo "Modifying uqmi source code..."
+ #         sed -i 's/bool complete = false/static bool complete = false/' build_dir/target-x86_64_musl/uqmi-2022-05-04-56cb2d40/dev.c
+ #       fi
+ #       
+ #       # 方案2：如果方案1不起作用，修改编译选项
+ #       echo "Modifying uqmi Makefile to disable dangling pointer warning..."
+ #       sed -i 's/-Werror/-Werror -Wno-error=dangling-pointer/g' package/network/utils/uqmi/Makefile
+ #       
+ #       # 清理并重新编译 uqmi
+ #       echo "Cleaning uqmi package..."
+ #       make package/network/utils/uqmi/clean
+ #       
+ #       # 恢复配置
+ #       cp .config.backup .config
 
     - name: Download package
       id: package
