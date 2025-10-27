@@ -15,7 +15,7 @@ sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 
 # 补充汉化       
 # cp -f ./feeds/springwrt/files/udpxy.lua ./feeds/luci/applications/luci-app-udpxy/luasrc/model/cbi
-# cp -f ./feeds/springwrt/files/mwan3.po ./feeds/luci/applications/luci-app-mwan3/po/zh-cn
+cp -f ./feeds/springwrt/files/mwan3.po ./feeds/luci/applications/luci-app-mwan3/po/zh-cn
 
 # 取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
