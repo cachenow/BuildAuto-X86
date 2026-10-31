@@ -16,7 +16,7 @@ Collected errors
 - 如果要使用autocore，并通过ssh-key自动获取pve宿主机温度，需要对libssh等ssh选项进行开启编译。
 
 ##### 更新:
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cachenow/BuildAuto?style=for-the-badge&logo=appveyor&label=最新固件)](https://github.com/cachenow/BuildAuto/releases/latest)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cachenow/BuildAuto-X86?style=for-the-badge&logo=appveyor&label=最新固件)](https://github.com/cachenow/BuildAuto/releases/latest)
 
 
 #### 注意：
