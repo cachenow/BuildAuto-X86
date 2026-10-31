@@ -230,14 +230,14 @@ jobs:
         retain_days: 7
         keep_minimum_runs: 0
 
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@master
-      if: steps.release.outcome == 'success' && env.UPLOAD_RELEASE == 'true'
-      with:
-        keep_latest: 5
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#    - name: Remove old Releases
+#      uses: dev-drprasad/delete-older-releases@master
+#      if: steps.release.outcome == 'success' && env.UPLOAD_RELEASE == 'true'
+#      with:
+#        keep_latest: 5
+#        delete_tags: true
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #    - name: Notification
 #      if: cancelled() == false
