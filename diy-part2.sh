@@ -27,6 +27,9 @@ if [ ! -f "$argon_src/Makefile" ]; then
 fi
 
 rm -f package/feeds/luci/luci-theme-argon
+# 避免 LEDE 自带 Argon Config 覆盖第三方语言包
+rm -f package/feeds/luci/luci-app-argon-config
+
 ln -sfnT ../../../feeds/springwrt/jerrykuku/luci-theme-argon "$argon_dst" || exit 1
 if [ "$(readlink -f "$argon_dst")" != "$(readlink -f "$argon_src")" ]; then
   echo "ERROR: Argon 软链接未指向 springwrt 源码" >&2
